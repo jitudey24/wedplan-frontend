@@ -9,8 +9,8 @@ import { headers } from "next/headers";
  * session cookie/JWT — it never trusts vendorId/email from the browser.
  */
 const BACKEND_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ||
   process.env.NEXT_PUBLIC_API_URL ||
+  process.env.NEXT_PUBLIC_API_BASE_URL ||
   "http://localhost:5000";
 
 export async function POST(req) {

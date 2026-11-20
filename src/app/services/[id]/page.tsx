@@ -274,8 +274,8 @@ function ServiceDetailsContent() {
       setIsLoading(true);
       try {
         const baseUrl =
-          process.env.NEXT_PUBLIC_API_BASE_URL ||
           process.env.NEXT_PUBLIC_API_URL ||
+          process.env.NEXT_PUBLIC_API_BASE_URL ||
           "http://localhost:5000";
         const apiUrl = `${baseUrl.replace(/\/+$/, "")}/api/v1/services/${serviceId}`;
 

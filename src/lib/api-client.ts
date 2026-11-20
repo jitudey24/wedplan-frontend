@@ -2,8 +2,8 @@ import { getSessionToken } from "@/lib/auth-session";
 
 /**
  * Small typed wrapper around `fetch` for talking to the WedPlan Express
- * backend. The base URL comes from `NEXT_PUBLIC_API_BASE_URL` (.env) and is
- * inlined at build time.
+ * backend. The base URL comes from `NEXT_PUBLIC_API_URL` (.env / Vercel env
+ * settings) and is inlined at build time.
  */
 
 // Sensible local default so the app still works if someone clones without
@@ -11,7 +11,10 @@ import { getSessionToken } from "@/lib/auth-session";
 const DEFAULT_BASE_URL = "http://localhost:5000";
 
 export function getApiBaseUrl(): string {
-  const raw = process.env.NEXT_PUBLIC_API_BASE_URL ?? DEFAULT_BASE_URL;
+  const raw =
+    process.env.NEXT_PUBLIC_API_URL ||
+    process.env.NEXT_PUBLIC_API_BASE_URL ||
+    DEFAULT_BASE_URL;
 
   return raw.replace(/\/+$/, "");
 }
